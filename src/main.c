@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:37:12 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/20 18:38:37 by bkayleen         ###   ########.fr       */
+/*   Updated: 2019/10/20 20:49:01 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		main(int argc, char **argv)
 {
-	ft_putstr("Processing...\n");
+	if (argc == 2)
+		ft_putstr(argv[1]);
 	return (0);
 }
