@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:57:54 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/23 22:01:45 by bkayleen         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:28:39 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ void		process_parsing(t_arguments *res, int argc, char **argv)
 	int		i;
 	int		flags_arguments;
 
-	flags_arguments = determine_flags_arguments_count(argc, argv);
+	flags_arguments = determine_flags_arguments_count(argc - 1, argv + 1);
 	i = 0;
-	res->flags = (char *)malloc(2);
-	res->flags[0] = 'r';
-	// changes here
+	res->flags = parse_flags(argv, flags_arguments);
+	// res->input_files = parse_files(argc, argv, flags_arguments);
 }
 
 void		set_default_dir(t_arguments *res)
@@ -39,7 +38,7 @@ t_arguments	*parse_arguments(int argc, char **argv)
 	t_arguments	*res;
 
 	res = (t_arguments *)ft_memalloc(sizeof(res));
-	if (argc)
+	if (argc - 1)
 		process_parsing(res, argc, argv);
 	if (!res->input_files)
 		set_default_dir(res);
