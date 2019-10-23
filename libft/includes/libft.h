@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 19:14:29 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/23 21:08:13 by bkayleen         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:18:11 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,9 @@ void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 int		ft_starts_with(char *s, char *s2);
+void	ft_cjoin(char **s, char *s2);
+int		ft_in(char c, char *s);
+int		ft_not_in(char c, char *s);
+void	ft_chrcjoin(char **s, char c);
 
 #endif

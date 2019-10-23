@@ -6,7 +6,7 @@
 #    By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/20 18:36:30 by bkayleen          #+#    #+#              #
-#    Updated: 2019/10/23 21:49:46 by bkayleen         ###   ########.fr        #
+#    Updated: 2019/10/23 23:17:52 by bkayleen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,11 @@ SRC = ft_atoi.c \
         ft_strtrim.c \
         ft_tolower.c \
         ft_toupper.c \
-		ft_starts_with.c
+		ft_starts_with.c \
+		ft_cjoin.c \
+		ft_in.c \
+		ft_not_in.c \
+		ft_chrcjoin.c
 
 OBJ = $(SRC:.c=.o)
 
