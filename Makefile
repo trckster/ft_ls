@@ -6,13 +6,15 @@
 #    By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/20 20:45:25 by bkayleen          #+#    #+#              #
-#    Updated: 2019/10/20 20:55:11 by bkayleen         ###   ########.fr        #
+#    Updated: 2019/10/23 21:48:58 by bkayleen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
 
-SRC = src/main.c
+SRC = src/main.c \
+	  src/parser.c \
+	  src/parse_flags.c
 
 LIB = libft
 OBJ = $(SRC:.c=.o)

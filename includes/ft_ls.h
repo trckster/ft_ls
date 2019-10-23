@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:36:06 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/20 18:36:09 by bkayleen         ###   ########.fr       */
+/*   Updated: 2019/10/23 21:37:49 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 # define FT_LS_H
 
 # include "../libft/includes/libft.h"
-/**
- * Provide some functions
- */
+
+# define AVAILABLE_FLAGS "alrtR"
+
+typedef struct	s_arguments
+{
+	char **input_files;
+	char *flags;
+}				t_arguments;
+
+t_arguments		*parse_arguments(int argc, char **argv);
+int				determine_flags_arguments_count(int argc, char **argv);
+void			show_usage(char *a, char *b);
+
 #endif

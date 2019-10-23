@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 18:37:12 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/23 21:32:07 by bkayleen         ###   ########.fr       */
+/*   Created: 2019/10/23 21:33:28 by bkayleen          #+#    #+#             */
+/*   Updated: 2019/10/23 21:33:54 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+int			determine_flags_arguments_count(int argc, char **argv)
 {
-	t_arguments *arguments;
+	int	i;
 
-	arguments = parse_arguments(argc - 1, argv + 1);
-	ft_putstr(arguments->flags);
-	return (0);
+	i = 0;
+	while (i < argc)
+	{
+		if (!ft_starts_with("-", argv[i]) || ft_strlen(argv[i]) < 2)
+			break ;
+		i++;
+	}
+	return (i);
 }
