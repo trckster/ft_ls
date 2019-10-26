@@ -15,7 +15,7 @@
 void	show_usage(char *name, char *error_msg)
 {
 	ft_putstr(name);
-	ft_putstr("\n");
+	ft_putstr(": ");
 	ft_putstr(error_msg);
 	ft_putstr("\n");
 	ft_putstr("usage, write printf first");

@@ -28,7 +28,7 @@ int			determine_flags_arguments_count(int argc, char **argv)
 	return (i);
 }
 
-char		*find_next_group(char *s)
+char		*find_next_group(char *s, char *already_found)
 {
 	char	*flags_group;
 	int		i;
@@ -37,7 +37,7 @@ char		*find_next_group(char *s)
 	i = 1;
 	while (s[i])
 	{
-		if (ft_not_in(s[i], flags_group))
+		if (ft_not_in(s[i], flags_group) && ft_not_in(s[i], already_found))
 			ft_chrcjoin(&flags_group, s[i]);
 		i++;
 	}
@@ -66,10 +66,10 @@ char		*parse_flags(char **argv, int flags_count)
 	char	bad_one;
 
 	all_input_flags = ft_strnew(0);
-	i = 1;
+	i = 0;
 	while (i < flags_count)
 	{
-		tmp_flags = find_next_group(argv[i]);
+		tmp_flags = find_next_group(argv[i], all_input_flags);
 		ft_cjoin(&all_input_flags, tmp_flags);
 		free(tmp_flags);
 		i++;
@@ -77,7 +77,6 @@ char		*parse_flags(char **argv, int flags_count)
 	bad_one = bad_flags(all_input_flags);
 	if (bad_one)
 	{
-		show_usage(argv[0], "bad found");
 		free(all_input_flags);
 		return (0);
 	}

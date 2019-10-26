@@ -17,7 +17,7 @@ int		main(int argc, char **argv)
 	t_arguments *arguments;
 
 	arguments = parse_arguments(argc, argv);
-	if (!arguments)
+	if (!arguments || !arguments->flags)
 	{
 		show_usage(argv[0], "somth went wrong =(");
 		return (0);

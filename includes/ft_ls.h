@@ -15,6 +15,7 @@
 # define FT_LS_H
 
 # include "../libft/includes/libft.h"
+# include <stdio.h>
 
 # define AVAILABLE_FLAGS "alrtR"
 
