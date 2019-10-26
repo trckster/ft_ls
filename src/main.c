@@ -22,6 +22,5 @@ int		main(int argc, char **argv)
 		show_usage(argv[0], "somth went wrong =(");
 		return (0);
 	}
-	ft_putstr(arguments->flags);
 	return (0);
 }

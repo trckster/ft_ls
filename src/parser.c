@@ -14,11 +14,9 @@
 
 void		process_parsing(t_arguments *res, int argc, char **argv)
 {
-//	int		i;
 	int		flags_arguments;
 
 	flags_arguments = determine_flags_arguments_count(argc - 1, argv + 1);
-//	i = 0;
 	res->flags = parse_flags(argv + 1, flags_arguments);
 	// res->input_files = parse_files(argc, argv, flags_arguments);
 }
@@ -40,6 +38,8 @@ t_arguments	*parse_arguments(int argc, char **argv)
 	res = (t_arguments *)ft_memalloc(sizeof(res));
 	if (argc - 1)
 		process_parsing(res, argc, argv);
+	else
+		res->flags = ft_strnew(0);
 	if (!res->input_files)
 		set_default_dir(res);
 	return (res);
