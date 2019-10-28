@@ -17,6 +17,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -77,5 +78,6 @@ void	ft_cjoin(char **s, char *s2);
 int		ft_in(char c, char *s);
 int		ft_not_in(char c, char *s);
 void	ft_chrcjoin(char **s, char c);
+void	ft_printf(char *pattern, ...);
 
 #endif

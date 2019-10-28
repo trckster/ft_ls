@@ -67,7 +67,8 @@ SRC = ft_atoi.c \
 		ft_cjoin.c \
 		ft_in.c \
 		ft_not_in.c \
-		ft_chrcjoin.c
+		ft_chrcjoin.c \
+		ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
