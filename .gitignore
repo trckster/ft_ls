@@ -1,1 +1,5 @@
 .idea/
+libft/*.o
+libft/*.a
+src/*.o
+ft_ls

@@ -6,18 +6,22 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:57:54 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:28:39 by bkayleen         ###   ########.fr       */
+/*   Updated: 2019/12/05 14:08:49 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		process_parsing(t_arguments *res, int argc, char **argv)
+int			process_parsing(t_arguments *res, int argc, char **argv)
 {
 	int		flags_arguments;
 
 	flags_arguments = determine_flags_arguments_count(argc - 1, argv + 1);
 	res->flags = parse_flags(argv + 1, flags_arguments);
+	if (res->flags)
+		return (1);
+	else
+		return (0);
 	// res->input_files = parse_files(argc, argv, flags_arguments);
 }
 
@@ -37,6 +41,11 @@ t_arguments	*parse_arguments(int argc, char **argv)
 
 	res = (t_arguments *)ft_memalloc(sizeof(res));
 	if (argc - 1)
+		if (!process_parsing(res, argc, argv))
+		{
+			free(res);
+			return (0);
+		}
 		process_parsing(res, argc, argv);
 	else
 		res->flags = ft_strnew(0);
