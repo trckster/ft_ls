@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:33:28 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:31:19 by bkayleen         ###   ########.fr       */
+/*   Updated: 2019/12/07 14:16:32 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,6 @@ char		*parse_flags(char **argv, int flags_count)
 		ft_cjoin(&all_input_flags, tmp_flags);
 		free(tmp_flags);
 		i++;
-	}
-	bad_one = bad_flags(all_input_flags);
-	if (bad_one)
-	{
-		free(all_input_flags);
-		return (0);
 	}
 	return (all_input_flags);
 }
