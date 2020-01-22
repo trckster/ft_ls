@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 18:37:12 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 17:31:44 by bkayleen         ###   ########.fr       */
+/*   Created: 2020/01/22 20:40:51 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/01/22 20:42:33 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+void	display_file(char *filename)
 {
-	t_arguments *arguments;
+	ft_putstr(filename);
+}
 
-	arguments = parse_arguments(argc, argv);
-	if (!arguments || !check_flags(arguments, argv[0]))
-		return (0);
-	/** Debug moment */
-	//ft_printf("[DEBUG] Arguments: %s\n", arguments->flags);
-	process_ls(arguments);
-	return (0);
+void	display_file_with_meta(char *filename)
+{
+	ft_printf("--------- -------- ----------- :: %s", filename);
 }

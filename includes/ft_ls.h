@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:36:06 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 16:52:42 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 22:01:57 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 # include "../libft/includes/libft.h"
 # include <stdio.h>
+# include <dirent.h>
+# include <sys/stat.h>
 
 # define AVAILABLE_FLAGS "alrtR"
 
@@ -32,5 +34,8 @@ char			*parse_flags(char **argv, int flags_count);
 int				check_flags(t_arguments *arguments, char *program_name);
 void			process_ls(t_arguments *);
 void			spawn_error(char *program_name, char *error);
+void			display_file(char *filename);
+void			display_file_with_meta(char *filename);
+void			get_needed_files_entries(char **files);
 
 #endif

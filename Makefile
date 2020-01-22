@@ -6,7 +6,7 @@
 #    By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/20 20:45:25 by bkayleen          #+#    #+#              #
-#    Updated: 2020/01/22 15:59:56 by bkayleen         ###   ########.fr        #
+#    Updated: 2020/01/22 22:01:06 by bkayleen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC = src/main.c \
 	  src/parser.c \
 	  src/parse_flags.c \
 	  src/show_usage.c \
-	  src/ls.c
+	  src/ls.c \
+	  src/crawler.c
 
 LIB = libft
 OBJ = $(SRC:.c=.o)
