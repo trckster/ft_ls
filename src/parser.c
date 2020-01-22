@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:57:54 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 17:35:25 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 22:51:19 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void		process_parsing(t_arguments *res, int argc, char **argv)
 
 	flags_arguments = determine_flags_arguments_count(argc - 1, argv + 1);
 	res->flags = parse_flags(argv + 1, flags_arguments);
-	res->input_files = 0;
-	// res->input_files = parse_files(argc, argv, flags_arguments);
+	if (argc == flags_arguments + 1)
+		res->input_files = 0;
+	else
+		res->input_files = parse_files(argc - 1, argv + 1, flags_arguments);
 }
 
 void		set_default_dir(t_arguments *res)

@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:33:28 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 17:19:52 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 23:36:50 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			determine_flags_arguments_count(int argc, char **argv)
 	{
 		if (!ft_starts_with("-", argv[i]) || ft_strlen(argv[i]) < 2)
 			break ;
-		if (argv[i][1] == '-')
+		if (argv[i][1] == '-' && !argv[i][2])
 			break ;
 		i++;
 	}
@@ -58,7 +58,7 @@ char		bad_flags(char *s)
 	return (0);
 }
 
-int check_flags(t_arguments *arguments, char *program_name)
+int check_flags(t_arguments *arguments)
 {
 	char bad_char;
 
@@ -68,7 +68,8 @@ int check_flags(t_arguments *arguments, char *program_name)
 		free(arguments->flags);
 		free(arguments->input_files);
 		free(arguments);
-		spawn_error(program_name, ft_sprintf("illegal option -- %c", bad_char));
+		spawn_error(ft_sprintf("illegal option -- %c", bad_char));
+		show_usage();
 		return (0);
 	}
 	return (1);

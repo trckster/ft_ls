@@ -6,7 +6,7 @@
 #    By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/20 20:45:25 by bkayleen          #+#    #+#              #
-#    Updated: 2020/01/22 22:01:06 by bkayleen         ###   ########.fr        #
+#    Updated: 2020/01/22 23:37:05 by bkayleen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = ft_ls
 SRC = src/main.c \
 	  src/parser.c \
 	  src/parse_flags.c \
-	  src/show_usage.c \
+	  src/parse_files.c \
+	  src/messages.c \
 	  src/ls.c \
 	  src/crawler.c
 

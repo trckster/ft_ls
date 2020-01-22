@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:37:12 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 17:31:44 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 23:31:41 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ int		main(int argc, char **argv)
 	t_arguments *arguments;
 
 	arguments = parse_arguments(argc, argv);
-	if (!arguments || !check_flags(arguments, argv[0]))
+	if (!arguments || !check_flags(arguments))
 		return (0);
 	/** Debug moment */
 	//ft_printf("[DEBUG] Arguments: %s\n", arguments->flags);
+	//int i =0;while(arguments->input_files[i])ft_printf("%s\n", arguments->input_files[i++]);
 	process_ls(arguments);
 	return (0);
 }
