@@ -6,7 +6,7 @@
 #    By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/20 18:36:30 by bkayleen          #+#    #+#              #
-#    Updated: 2019/10/23 23:17:52 by bkayleen         ###   ########.fr        #
+#    Updated: 2020/01/22 16:54:16 by bkayleen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,8 @@ SRC = ft_atoi.c \
 		ft_in.c \
 		ft_not_in.c \
 		ft_chrcjoin.c \
-		ft_printf.c
+		ft_printf.c \
+		ft_sprintf.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_errprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/07 16:11:56 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 16:55:47 by bkayleen         ###   ########.fr       */
+/*   Created: 2020/01/22 16:39:37 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/01/22 16:40:28 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_sprintf(char *pattern, ...)
+void	ft_errprintf(char *pattern, ...)
 {
 	va_list		args;
 	int 		i;
-	char		*result;
 
 	va_start(args, pattern);
-	result = ft_strnew(0);
 	i = 0;
 	while (pattern[i])
 	{
@@ -27,18 +25,18 @@ char	*ft_sprintf(char *pattern, ...)
 		{
 			i++;
 			if (pattern[i] == 's')
-				ft_cjoin(&result, va_arg(args, char *));
+				ft_putstr_fd(va_arg(args, char *), 2);
 			else if (pattern[i] == 'd')
-				ft_cjoin(&result, ft_itoa(va_arg(args, int)));
+				ft_putnbr_fd(va_arg(args, int), 2);
 			else if (pattern[i] == 'c')
-				ft_chrcjoin(&result, (char)va_arg(args, int));
+				ft_putchar_fd((char)va_arg(args, int), 2);
 			else
-				ft_chrcjoin(&result, pattern[--i]);
+				ft_putchar_fd(pattern[--i], 2);
 		}
 		else
-			ft_chrcjoin(&result, pattern[i]);
+			ft_putchar_fd(pattern[i], 2);
 		i++;
 	}
+
 	va_end(args);
-	return (result);
 }
