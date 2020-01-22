@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 19:14:29 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:18:11 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:32:18 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int		ft_in(char c, char *s);
 int		ft_not_in(char c, char *s);
 void	ft_chrcjoin(char **s, char c);
 void	ft_printf(char *pattern, ...);
+char	*ft_sprintf(char *pattern, ...);
 
 #endif
