@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:33:28 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 16:58:15 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:19:52 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int check_flags(t_arguments *arguments, char *program_name)
 		free(arguments->flags);
 		free(arguments->input_files);
 		free(arguments);
-		spawn_error(program_name, ft_sprintf("%s", "ok boomer"));
+		spawn_error(program_name, ft_sprintf("illegal option -- %c", bad_char));
 		return (0);
 	}
 	return (1);
