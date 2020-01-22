@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ls.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 18:37:12 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 16:56:27 by bkayleen         ###   ########.fr       */
+/*   Created: 2020/01/22 15:57:45 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/01/22 16:01:33 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+void	process_ls(t_arguments *arguments)
 {
-	t_arguments *arguments;
-
-	arguments = parse_arguments(argc, argv);
-	if (!arguments || !check_flags(arguments, argv[0]))
-		return (0);
-	process_ls(arguments);
-	ft_printf("Arguments: %s\n", arguments->flags);
-	return (0);
+	ft_printf("ok running\n");
+	arguments += 1;
 }

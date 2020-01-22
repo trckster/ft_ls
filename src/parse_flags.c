@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:33:28 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/12/07 14:16:32 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:58:15 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,27 @@ char		bad_flags(char *s)
 	return (0);
 }
 
+int check_flags(t_arguments *arguments, char *program_name)
+{
+	char bad_char;
+
+	bad_char = bad_flags(arguments->flags);
+	if (bad_char)
+	{
+		free(arguments->flags);
+		free(arguments->input_files);
+		free(arguments);
+		spawn_error(program_name, ft_sprintf("%s", "ok boomer"));
+		return (0);
+	}
+	return (1);
+}
+
 char		*parse_flags(char **argv, int flags_count)
 {
 	int		i;
 	char	*all_input_flags;
 	char	*tmp_flags;
-	char	bad_one;
 
 	all_input_flags = ft_strnew(0);
 	i = 0;

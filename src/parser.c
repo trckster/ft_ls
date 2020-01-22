@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:57:54 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/12/07 14:17:37 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:53:10 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_arguments	*parse_arguments(int argc, char **argv)
 
 	res = (t_arguments *)ft_memalloc(sizeof(res));
 	if (argc - 1)
-		process_parsing(res, argc, argv)
+		process_parsing(res, argc, argv);
 	else
 		res->flags = ft_strnew(0);
 	if (!res->input_files)
