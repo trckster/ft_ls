@@ -18,7 +18,10 @@ SRC = src/main.c \
 	  src/parse_files.c \
 	  src/messages.c \
 	  src/ls.c \
-	  src/crawler.c
+	  src/crawler.c \
+	  src/display.c \
+	  src/files_helpers.c \
+	  src/flags_helpers.c
 
 LIB = libft
 OBJ = $(SRC:.c=.o)

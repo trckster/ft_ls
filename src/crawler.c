@@ -12,27 +12,36 @@
 
 #include "ft_ls.h"
 
-void	get_needed_files_entries(char **files)
+int     input_files_count(char **input)
 {
-	int	i;
-	struct stat entry;
+	int i;
 
 	i = 0;
-	while (files[i])
+	while (input[i])
+		i++;
+	return (i);
+}
+
+void	get_needed_files_entries(char **input, char ***files)
+{
+	int         i;
+	int         files_cnt;
+	struct stat entry;
+
+	*files = (char **)malloc(sizeof(char *) * (input_files_count(input) + 1));
+	i = 0;
+	files_cnt = 0;
+	while (input[i])
 	{
-		if (stat(files[i], &entry) == -1)
+		if (stat(input[i], &entry) == -1)
 		{
 			// actually here can be other error so it must be determined inside spawner
-			spawn_error(ft_sprintf("%s: No such file or directory", files[i]));
+			spawn_error(ft_sprintf("%s: No such file or directory", input[i]));
 			i++;
 			continue;
 		}
-		ft_printf("%d\n", entry.st_mode);
-		if ((entry.st_mode & S_IFMT) == S_IFREG)
-			ft_printf("File\n");
-		else
-			ft_printf("Dir\n");
+		(*files)[files_cnt++] = ft_strdup(input[i]);
 		i++;
-		//ft_printf("%s\n", path_stat.st_mode);
 	}
+	(*files)[files_cnt] = 0;
 }
