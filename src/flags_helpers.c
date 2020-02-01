@@ -16,3 +16,8 @@ int     with_hidden(char *flags)
 {
 	return ft_in('a', flags);
 }
+
+int     with_meta(char *flags)
+{
+	return ft_in('l', flags);
+}

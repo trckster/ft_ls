@@ -16,13 +16,18 @@ void	display_file(char *filename, char *flags)
 {
 	if (!with_hidden(flags) && file_is_hidden(filename))
 		return ;
-	ft_putstr(filename);
-	ft_putchar(' ');
+	if (with_meta(flags))
+		display_file_with_meta(filename);
+	else
+	{
+		ft_putstr(filename);
+		ft_putchar(' ');
+	}
 }
 
 void	display_file_with_meta(char *filename)
 {
-	ft_printf("--------- -------- ----------- :: %s", filename);
+	ft_printf("--------- -------- ----------- :: %s\n", filename);
 }
 
 void    display_files(char **items, char *flags)

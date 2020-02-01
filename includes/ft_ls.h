@@ -41,6 +41,7 @@ void			get_needed_files_entries(char **input, char ***files);
 void            display_files(char **items, char *flags);
 void            display_dirs(char **items, char *flags);
 int             with_hidden(char *flags);
+int             with_meta(char *flags);
 int             file_is_hidden(char *filename);
 
 #endif
