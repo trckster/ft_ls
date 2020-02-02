@@ -27,6 +27,7 @@ void	display_file(char *filename, char *flags)
 
 void	display_file_with_meta(char *filename)
 {
+	// TODO: end it!
 	ft_printf(">>> File owner: %s -------- ----------- :: %s\n",
 			get_file_owner(filename),
 			filename);
@@ -85,9 +86,11 @@ void    display_dirs(char **items, char *flags)
 			i++;
 			continue ;
 		}
-//		if (recursive(flags))
-//			display_directory_recursive(items[i])
-		display_dir_with_content(items[i], items[1] != 0, flags);
+		if (recursive(flags))
+			// TODO: continue work here
+			display_directory_recursive(items[i]);
+		else
+			display_dir_with_content(items[i], items[1] != 0, flags);
 		i++;
 	}
 }

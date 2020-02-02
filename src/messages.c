@@ -12,6 +12,8 @@
 
 #include "ft_ls.h"
 
+
+// TODO: figure out about perror()
 void	spawn_error(char *error_msg)
 {
 	ft_errprintf("ft_ls: %s\n", error_msg);

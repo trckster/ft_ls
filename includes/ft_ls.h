@@ -46,5 +46,6 @@ int             with_meta(char *flags);
 int             recursive(char *flags);
 int             file_is_hidden(char *filename);
 char            *get_file_owner(char *filename);
+void            display_directory_recursive(char *dir);
 
 #endif
