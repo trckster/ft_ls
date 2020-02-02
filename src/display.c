@@ -27,7 +27,9 @@ void	display_file(char *filename, char *flags)
 
 void	display_file_with_meta(char *filename)
 {
-	ft_printf("--------- -------- ----------- :: %s\n", filename);
+	ft_printf(">>> File owner: %s -------- ----------- :: %s\n",
+			get_file_owner(filename),
+			filename);
 }
 
 void    display_files(char **items, char *flags)
@@ -54,8 +56,8 @@ void    display_files(char **items, char *flags)
 
 void    display_dir_with_content(char *dirname, int introduce_dir, char *flags)
 {
-	struct dirent *entry;
-	DIR *dird;
+	struct dirent   *entry;
+	DIR             *dird;
 
 	if (introduce_dir)
 		ft_printf("%s:\n", dirname);
@@ -83,6 +85,8 @@ void    display_dirs(char **items, char *flags)
 			i++;
 			continue ;
 		}
+//		if (recursive(flags))
+//			display_directory_recursive(items[i])
 		display_dir_with_content(items[i], items[1] != 0, flags);
 		i++;
 	}

@@ -21,3 +21,8 @@ int     with_meta(char *flags)
 {
 	return ft_in('l', flags);
 }
+
+int     recursive(char *flags)
+{
+	return ft_in('R', flags);
+}

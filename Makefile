@@ -21,7 +21,8 @@ SRC = src/main.c \
 	  src/crawler.c \
 	  src/display.c \
 	  src/files_helpers.c \
-	  src/flags_helpers.c
+	  src/flags_helpers.c \
+	  src/stat.c
 
 LIB = libft
 OBJ = $(SRC:.c=.o)

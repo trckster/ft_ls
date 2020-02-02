@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <sys/stat.h>
+# include <pwd.h>
 
 # define AVAILABLE_FLAGS "alrtR"
 
@@ -42,6 +43,8 @@ void            display_files(char **items, char *flags);
 void            display_dirs(char **items, char *flags);
 int             with_hidden(char *flags);
 int             with_meta(char *flags);
+int             recursive(char *flags);
 int             file_is_hidden(char *filename);
+char            *get_file_owner(char *filename);
 
 #endif
