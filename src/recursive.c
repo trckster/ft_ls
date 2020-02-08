@@ -8,10 +8,9 @@
 
 void    display_directory_recursive(char *dir)
 {
-	struct stat **stats;
-	ft_printf("%s:\n", dir);
-	set_stat_refs(dir, &stats);
-//	sort_ur_ass(); // TODO: not implemented
+	t_file **files;
 	ft_printf("Trying to read dir %s\n", dir);
+	fill_files(dir, &files);
+//	sort_ur_ass(); // TODO: not implemented
 	free(stats);
 }

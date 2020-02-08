@@ -58,7 +58,13 @@ int    available_files_count(char *dirname)
 	return 200; // TODO: Hardcoded now, must be WRITTEN OF COURSE
 }
 
-void    set_stat_refs(char *dirname, struct stat ***stats)
+int     set_file(t_file **files, char *pathname, char *name)
+{
+	// fill files with real info here NEXTODO
+	*files = (struct )
+}
+
+void    fill_files(char *dirname, t_file ***files)
 {
 	int             i;
 	int             files_cnt;
@@ -66,23 +72,20 @@ void    set_stat_refs(char *dirname, struct stat ***stats)
 	DIR             *dir;
 	struct dirent   *dp;
 
-	if (!(dir = opendir(dirname))) {
-		spawn_error("??");//TODO
-		free(stats);
+	if (!(dir = opendir(dirname)))
+	{
+		perror("Error");//TODO
 		return ;
 	}
 	i = 0;
 	files_cnt = available_files_count(dirname);
-	*stats = (struct stat **)malloc(sizeof(struct stat) * (files_cnt + 1));
+	*files = (t_file **)ft_memalloc(sizeof(t_file *) * (files_cnt + 1));
 	while ((dp = readdir(dir))) {
 		temp = full(dirname, dp->d_name);
-		ft_printf("%s\n", temp);
-		if(stat(temp, (*stats)[i]) == -1) //NEXTODO true always, determine why
-			spawn_error(ft_sprintf("%s: No such file or directory", "Mmm"));//TODO
-		else
+		if (set_file(*files + i, temp, dp->d_name) != -1)
 			i++;
 		free(temp);
 	}
 	closedir(dir);
-	(*stats)[i] = 0;
+	(*files)[i] = 0;
 }

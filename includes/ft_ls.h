@@ -28,6 +28,13 @@ typedef struct	s_arguments
 	char *flags;
 }				t_arguments;
 
+typedef struct  s_file
+{
+	char        *filename;
+	char        *pathname;
+	struct stat entry;
+}               t_file;
+
 t_arguments		*parse_arguments(int argc, char **argv);
 int				determine_flags_arguments_count(int argc, char **argv);
 char			*parse_flags(char **argv, int flags_count);
@@ -48,6 +55,6 @@ int             file_is_hidden(char *filename);
 char            *get_file_owner(char *filename);
 void            display_directory_recursive(char *dir);
 char            *full(char *a, char *b);
-void            set_stat_refs(char *dirname, struct stat ***stats);
+void            fill_files(char *dirname, t_file ***stats);
 
 #endif
