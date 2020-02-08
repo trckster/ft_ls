@@ -47,5 +47,7 @@ int             recursive(char *flags);
 int             file_is_hidden(char *filename);
 char            *get_file_owner(char *filename);
 void            display_directory_recursive(char *dir);
+char            *full(char *a, char *b);
+void            set_stat_refs(char *dirname, struct stat ***stats);
 
 #endif

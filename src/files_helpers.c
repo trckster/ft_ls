@@ -16,3 +16,11 @@ int     file_is_hidden(char *filename)
 {
 	return ft_starts_with(".", filename);
 }
+
+char    *full(char *dirname, char *filename)
+{
+	char    *with_slash;
+
+	with_slash = ft_strjoin(dirname, "/");
+	return ft_strjoin(with_slash, filename);
+}
