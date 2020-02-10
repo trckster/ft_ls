@@ -60,8 +60,20 @@ int    available_files_count(char *dirname)
 
 int     set_file(t_file **files, char *pathname, char *name)
 {
-	// fill files with real info here NEXTODO
-	*files = (struct )
+	t_file  *file;
+
+	file = (t_file *)malloc(sizeof(t_file));
+	file->entry = (struct stat *)malloc(sizeof(struct stat));
+	if (stat(pathname, file->entry) == -1) {
+		perror("fuck dat"); // TODO: perror normal display
+		free(file->entry);
+		free(file);
+		return (-1);
+	}
+	file->filename = ft_strdup(name);
+	file->pathname = ft_strdup(pathname);
+	*files = file;
+	return (0);
 }
 
 void    fill_files(char *dirname, t_file ***files)
@@ -74,8 +86,8 @@ void    fill_files(char *dirname, t_file ***files)
 
 	if (!(dir = opendir(dirname)))
 	{
-		perror("Error");//TODO
-		return ;
+		perror("Error opening dir");// TODO: Normalize perror
+		return ; // TODO: change void to int and return -1 if crashes
 	}
 	i = 0;
 	files_cnt = available_files_count(dirname);

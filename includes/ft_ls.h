@@ -32,7 +32,7 @@ typedef struct  s_file
 {
 	char        *filename;
 	char        *pathname;
-	struct stat entry;
+	struct stat *entry;
 }               t_file;
 
 t_arguments		*parse_arguments(int argc, char **argv);
