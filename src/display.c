@@ -12,6 +12,27 @@
 
 #include "ft_ls.h"
 
+void	display_t_file_with_meta(t_file *file)
+{
+	// TODO: end it!
+	ft_printf(">>> File owner: %s -------- ----------- :: %s\n",
+	          get_file_owner(file->pathname),
+	          file->pathname);
+}
+
+void    display_t_file(t_file *file, char *flags)
+{
+	if (!with_hidden(flags) && file_is_hidden(file->filename))
+		return ;
+	if (with_meta(flags))
+		display_t_file_with_meta(file);
+	else
+	{
+		ft_putstr(file->filename);
+		ft_putchar(' ');
+	}
+}
+
 void	display_file(char *filename, char *flags)
 {
 	if (!with_hidden(flags) && file_is_hidden(filename))
@@ -88,7 +109,7 @@ void    display_dirs(char **items, char *flags)
 		}
 		if (recursive(flags))
 			// TODO: continue work here
-			display_directory_recursive(items[i]);
+			display_directory_recursive(items[i], flags);
 		else
 			display_dir_with_content(items[i], items[1] != 0, flags);
 		i++;
