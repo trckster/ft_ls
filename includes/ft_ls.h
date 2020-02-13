@@ -53,9 +53,12 @@ int             with_meta(char *flags);
 int             recursive(char *flags);
 int             file_is_hidden(char *filename);
 char            *get_file_owner(char *filename);
-void            display_directory_recursive(char *dir, char *f);
+void            display_directory_recursive(t_file *file, char *f);
 char            *full(char *a, char *b);
 void            fill_files(char *dirname, t_file ***stats);
 void            display_t_file(t_file *file, char *flags);
+int             isdir(t_file *file);
+void            prepare_recursive(char *dir, char *flags);
+int             set_file(t_file **files, char *pathname, char *name);
 
 #endif

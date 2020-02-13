@@ -24,3 +24,8 @@ char    *full(char *dirname, char *filename)
 	with_slash = ft_strjoin(dirname, "/");
 	return ft_strjoin(with_slash, filename);
 }
+
+int     isdir(t_file *file)
+{
+	return ((file->entry->st_mode & S_IFMT) == S_IFDIR);
+}

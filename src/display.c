@@ -109,7 +109,7 @@ void    display_dirs(char **items, char *flags)
 		}
 		if (recursive(flags))
 			// TODO: continue work here
-			display_directory_recursive(items[i], flags);
+			prepare_recursive(items[i], flags);
 		else
 			display_dir_with_content(items[i], items[1] != 0, flags);
 		i++;
