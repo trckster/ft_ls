@@ -27,22 +27,20 @@ void    display_directory_recursive(t_file *file, char *flags)
 	fill_files(file->pathname, &files);
 //	sort_ur_ass(); // TODO: not implemented
 	display_t_files(files, flags);
-	ft_putchar('\n');
+	ft_putstr("\n\n");
 	i = 0;
 	while (files[i])
 	{
-		ft_printf("~ %s\n", file->filename);
 		if (!ft_strcmp(files[i]->filename, "..") || !ft_strcmp(files[i]->filename, "."))
 		{
 			i++;
 			continue;
 		}
 		if (isdir(files[i]))
-			if (with_hidden(flags) || !file_is_hidden(file->filename))
+			if (with_hidden(flags) || !file_is_hidden(files[i]->filename))
 				display_directory_recursive(files[i], flags);
 		i++;
 	}
-	// NEXTODO: start iterating recursively v konce koncov
 	free(files); // TODO: free all files, not only link to the files c:
 }
 

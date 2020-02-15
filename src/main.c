@@ -19,9 +19,6 @@ int		main(int argc, char **argv)
 	arguments = parse_arguments(argc, argv);
 	if (!arguments || !check_flags(arguments))
 		return (0);
-	/** Debug moment */
-	//ft_printf("[DEBUG] Arguments: %s\n", arguments->flags);
-	//int i =0;while(arguments->input_files[i])ft_printf("%s\n", arguments->input_files[i++]);
 	process_ls(arguments);
 	return (0);
 }
