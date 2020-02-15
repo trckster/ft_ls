@@ -12,46 +12,6 @@
 
 #include "ft_ls.h"
 
-int     input_files_count(char **input)
-{
-	int i;
-
-	i = 0;
-	while (input[i])
-		i++;
-	return (i);
-}
-
-/**
- * TODO: Actually we need no this func,
- * write set_stat_refs func, see how it can help.
- * @param input
- * @param files
- */
-void	get_needed_files_entries(char **input, char ***files)
-{
-	int         i;
-	int         files_cnt;
-	struct stat entry;
-
-	*files = (char **)malloc(sizeof(char *) * (input_files_count(input) + 1));
-	i = 0;
-	files_cnt = 0;
-	while (input[i])
-	{
-		if (stat(input[i], &entry) == -1)
-		{
-			// TODO: actually here can be other error so it must be determined inside spawner
-			spawn_error(ft_sprintf("%s: No such file or directory", input[i]));
-			i++;
-			continue;
-		}
-		(*files)[files_cnt++] = ft_strdup(input[i]);
-		i++;
-	}
-	(*files)[files_cnt] = 0;
-}
-
 int    available_files_count(char *dirname)
 {
 	dirname++;
@@ -100,4 +60,25 @@ void    fill_files(char *dirname, t_file ***files)
 	}
 	closedir(dir);
 	(*files)[i] = 0;
+}
+
+void    fill_different_files(char **inputs, t_file ***unprepared_files)
+{
+	t_file  **files;
+	int     valid_files_count;
+	int     i;
+	int     j;
+
+	valid_files_count = 200;
+	files = (t_file **)malloc(sizeof(t_file *) * (valid_files_count + 1));
+	i = 0;
+	j = 0;
+	while (j < valid_files_count && inputs[j])
+	{
+		if (set_file(files + i, inputs[j], inputs[j]) != -1)
+			i++;
+		j++;
+	}
+	files[i] = 0;
+	*unprepared_files = files;
 }

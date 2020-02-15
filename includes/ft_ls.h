@@ -45,7 +45,6 @@ void			spawn_error(char *error);
 void			show_usage(void);
 void			display_file(char *filename, char *flags);
 void			display_file_with_meta(char *filename);
-void			get_needed_files_entries(char **input, char ***files);
 void            display_files(char **items, char *flags);
 void            display_dirs(char **items, char *flags);
 int             with_hidden(char *flags);
@@ -60,5 +59,7 @@ void            display_t_file(t_file *file, char *flags);
 int             isdir(t_file *file);
 void            prepare_recursive(char *dir, char *flags);
 int             set_file(t_file **files, char *pathname, char *name);
+void            fill_different_files(char **files, t_file ***f);
+void            display_t_files(t_file **files, char *f);
 
 #endif
