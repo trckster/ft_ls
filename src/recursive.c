@@ -9,18 +9,25 @@
 void    display_t_files(t_file **files, char *flags, char type)
 {
 	int i;
+	int displayed_count;
 
 	i = 0;
+	displayed_count = 0;
 	while (files[i])
 	{
+		displayed_count += 1;
 		if (type == 'a')
 			display_t_file(files[i], flags);
 		else if (type == 'd' && isdir(files[i]))
 			display_t_file(files[i], flags);
 		else if (type == 'f' && !isdir(files[i]))
 			display_t_file(files[i], flags);
+		else
+			displayed_count -= 1;
 		i++;
 	}
+	if (displayed_count)
+		ft_putchar('\n');
 }
 
 void    display_directory_recursive(t_file *file, char *flags)
@@ -32,7 +39,7 @@ void    display_directory_recursive(t_file *file, char *flags)
 	fill_files(file->pathname, &files);
 //	sort_ur_ass(); // TODO: not implemented
 	display_t_files(files, flags, 'a');
-	ft_putstr("\n\n");
+	ft_putchar('\n');
 	i = 0;
 	while (files[i])
 	{
@@ -60,13 +67,4 @@ void    display_all_dirs_recursive(t_file **files, char *flags)
 			display_directory_recursive(files[i], flags);
 		i++;
 	}
-}
-
-void    prepare_recursive(char *dir, char *flags)
-{
-	t_file *file;
-
-	set_file(&file, dir, dir);
-
-	display_directory_recursive(file, flags);
 }

@@ -20,12 +20,11 @@ void	process_ls(t_arguments *arguments)
 
 	display_t_files(files, arguments->flags, 'f');
 
-	ft_putchar('\n');
-
 	if (recursive(arguments->flags))
 		display_all_dirs_recursive(files, arguments->flags);
 	else
-		display_t_files(files, arguments->flags, 'd');
+		display_all_dirs_with_content(files, arguments->flags);
+//		display_t_files(files, arguments->flags, 'd');
 
 	free_files(files);
 }
