@@ -61,5 +61,6 @@ int             set_file(t_file **files, char *pathname, char *name);
 void            fill_different_files(char **files, t_file ***f);
 void            display_t_files(t_file **files, char *f, char type);
 void            display_all_dirs_recursive(t_file **files, char *flags);
+void            free_files(t_file **files);
 
 #endif

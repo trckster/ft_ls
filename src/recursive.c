@@ -46,7 +46,7 @@ void    display_directory_recursive(t_file *file, char *flags)
 				display_directory_recursive(files[i], flags);
 		i++;
 	}
-	free(files); // TODO: free all files, not only link to the files c:
+	free_files(files);
 }
 
 void    display_all_dirs_recursive(t_file **files, char *flags)
