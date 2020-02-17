@@ -54,28 +54,6 @@ void	display_file_with_meta(char *filename)
 			filename);
 }
 
-void    display_files(char **items, char *flags)
-{
-	struct stat entry;
-	int         i;
-
-	i = 0;
-	while (items[i])
-	{
-		stat(items[i], &entry);
-		if ((entry.st_mode & S_IFMT) != S_IFREG)
-		{
-			i++;
-			continue ;
-		}
-		display_file(items[i], flags);
-		if (items[i + 1])
-			ft_putchar(' ');
-		i++;
-	}
-	ft_putchar('\n');
-}
-
 void    display_dir_with_content(char *dirname, int introduce_dir, char *flags)
 {
 	struct dirent   *entry;

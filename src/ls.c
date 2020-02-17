@@ -19,8 +19,12 @@ void	process_ls(t_arguments *arguments)
 	fill_different_files(arguments->input_files, &files);
 	// 2) sort this god damn shit (t/r/none)
 	// 3) display all files
-	display_t_files(files, arguments->flags);
-//	display_files(items, arguments->flags);
+	display_t_files(files, arguments->flags, 'f');
+	ft_putchar('\n');
+	if (recursive(arguments->flags))
+		display_all_dirs_recursive(files, arguments->flags);
+	else
+		display_t_files(files, arguments->flags, 'd');
 	// 4.1) display all directories
 //	display_dirs(items, arguments->flags);
 	// 4.2) when displaying dirs, make 1), then, if -R, do 4.2) more
