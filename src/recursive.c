@@ -26,7 +26,7 @@ void    display_t_files(t_file **files, char *flags, char type)
 			displayed_count -= 1;
 		i++;
 	}
-	if (displayed_count)
+	if (displayed_count && !with_meta(flags))
 		ft_putchar('\n');
 }
 
@@ -35,11 +35,11 @@ void    display_directory_recursive(t_file *file, char *flags)
 	t_file  **files;
 	int     i;
 
+	ft_putchar('\n');
 	ft_printf("%s:\n", file->pathname);
 	fill_files(file->pathname, &files);
 //	sort_ur_ass(); // TODO: not implemented
 	display_t_files(files, flags, 'a');
-	ft_putchar('\n');
 	i = 0;
 	while (files[i])
 	{

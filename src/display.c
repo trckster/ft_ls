@@ -40,6 +40,7 @@ void    display_dir_content(t_file *file, char *flags)
 	t_file  **files;
 
 	fill_files(file->pathname, &files);
+	// sort_ur_ass TODO
 	display_t_files(files, flags, 'a');
 }
 
@@ -48,7 +49,7 @@ void    display_all_dirs_with_content(t_file **files, char *flags)
 	int     i;
 	int     show_preview;
 
-	show_preview = count_displaying_dirs_in_t_files(files) > 1;
+	show_preview = files_count(files) > 1;
 	i = 0;
 	while (files[i])
 	{
