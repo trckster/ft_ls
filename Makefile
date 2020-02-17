@@ -24,7 +24,8 @@ SRC = src/main.c \
 	  src/flags_helpers.c \
 	  src/stat.c \
 	  src/recursive.c \
-	  src/free.c
+	  src/free.c \
+	  src/count_helpers.c
 
 LIB = libft
 OBJ = $(SRC:.c=.o)

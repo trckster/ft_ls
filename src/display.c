@@ -35,15 +35,29 @@ void    display_t_file(t_file *file, char *flags)
 	}
 }
 
+void    display_dir_content(t_file *file, char *flags)
+{
+	t_file  **files;
+
+	fill_files(file->pathname, &files);
+	display_t_files(files, flags, 'a');
+}
+
 void    display_all_dirs_with_content(t_file **files, char *flags)
 {
-	// realize this func TODO
 	int     i;
+	int     show_preview;
 
+	show_preview = count_displaying_dirs_in_t_files(files) > 1;
 	i = 0;
 	while (files[i])
 	{
-		display_t_file(files[i], flags);
+		if (isdir(files[i]))
+		{
+			if (show_preview)
+				ft_printf("%s:\n", files[i]->filename);
+			display_dir_content(files[i], flags);
+		}
 		i++;
 	}
 }
