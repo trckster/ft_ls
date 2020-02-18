@@ -40,7 +40,7 @@ void    display_dir_content(t_file *file, char *flags)
 	t_file  **files;
 
 	fill_files(file->pathname, &files);
-	// sort_ur_ass TODO
+	sort_files(&files, flags);
 	display_t_files(files, flags, 'a');
 }
 

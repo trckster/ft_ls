@@ -38,7 +38,7 @@ void    display_directory_recursive(t_file *file, char *flags)
 	ft_putchar('\n');
 	ft_printf("%s:\n", file->pathname);
 	fill_files(file->pathname, &files);
-//	sort_ur_ass(); // TODO: not implemented
+	sort_files(&files, flags);
 	display_t_files(files, flags, 'a');
 	i = 0;
 	while (files[i])

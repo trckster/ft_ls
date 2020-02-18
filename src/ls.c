@@ -17,7 +17,7 @@ void	process_ls(t_arguments *arguments)
 	t_file **files;
 
 	fill_different_files(arguments->input_files, &files);
-	// sort_ur_ass() TODO
+	sort_files(&files, arguments->flags);
 	display_t_files(files, arguments->flags, 'f');
 
 	if (recursive(arguments->flags))

@@ -60,5 +60,6 @@ void            display_all_dirs_recursive(t_file **files, char *flags);
 void            free_files(t_file **files);
 void            display_all_dirs_with_content(t_file **files, char *flags);
 int             files_count(t_file **files);
+void            sort_files(t_file ***files, char *flags);
 
 #endif
