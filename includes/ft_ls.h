@@ -43,13 +43,10 @@ int				check_flags(t_arguments *arguments);
 void			process_ls(t_arguments *);
 void			spawn_error(char *error);
 void			show_usage(void);
-int             file_is_hidden(char *filename);
 char            *get_file_owner(char *filename);
 void            display_directory_recursive(t_file *file, char *f);
-char            *full(char *a, char *b);
 void            fill_files(char *dirname, t_file ***stats);
 void            display_t_file(t_file *file, char *flags);
-int             isdir(t_file *file);
 int             set_file(t_file **files, char *pathname, char *name);
 void            fill_different_files(char **files, t_file ***f);
 void            display_t_files(t_file **files, char *f, char type);
@@ -58,6 +55,12 @@ void            free_files(t_file **files);
 void            display_all_dirs_with_content(t_file **files, char *flags);
 int             files_count(t_file **files);
 void            sort_files(t_file ***files, char *flags);
+
+/** Files helpers */
+void            swap_files(t_file **file, t_file **file2);
+int             file_is_hidden(char *filename);
+char            *full(char *a, char *b);
+int             isdir(t_file *file);
 void            reverse_files(t_file ***files);
 
 /** Flags helpers */

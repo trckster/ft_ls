@@ -17,10 +17,23 @@ void    sort_files_by_modification(t_file ***given_files)
 
 void    sort_files_alphabetically(t_file ***given_files)
 {
-	t_file **files;
+	t_file  **files;
+	int     i;
+	int     j;
 
 	files = *given_files;
-	// do sort
+	i = 0;
+	while (files[i])
+	{
+		j = i;
+		while (files[j])
+		{
+			if (ft_strcmp(files[i]->filename, files[j]->filename) > 0)
+				swap_files(files + i, files + j);
+			j++;
+		}
+		i++;
+	}
 	*given_files = files;
 }
 
