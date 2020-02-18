@@ -43,9 +43,6 @@ int				check_flags(t_arguments *arguments);
 void			process_ls(t_arguments *);
 void			spawn_error(char *error);
 void			show_usage(void);
-int             with_hidden(char *flags);
-int             with_meta(char *flags);
-int             recursive(char *flags);
 int             file_is_hidden(char *filename);
 char            *get_file_owner(char *filename);
 void            display_directory_recursive(t_file *file, char *f);
@@ -61,5 +58,13 @@ void            free_files(t_file **files);
 void            display_all_dirs_with_content(t_file **files, char *flags);
 int             files_count(t_file **files);
 void            sort_files(t_file ***files, char *flags);
+void            reverse_files(t_file ***files);
+
+/** Flags helpers */
+int             with_hidden(char *flags);
+int             with_meta(char *flags);
+int             recursive(char *flags);
+int             sort_by_modification(char *flags);
+int             reverse_sort(char *flags);
 
 #endif

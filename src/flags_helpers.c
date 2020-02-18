@@ -26,3 +26,13 @@ int     recursive(char *flags)
 {
 	return ft_in('R', flags);
 }
+
+int     sort_by_modification(char *flags)
+{
+	return ft_in('t', flags);
+}
+
+int     reverse_sort(char *flags)
+{
+	return ft_in('r', flags);
+}

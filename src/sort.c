@@ -6,28 +6,32 @@
 
 #include "ft_ls.h"
 
-void    mswap(t_file **file, t_file **file2)
+void    sort_files_by_modification(t_file ***given_files)
 {
-	t_file  *tmp;
+	t_file **files;
 
-	tmp = *file;
-	*file = *file2;
-	*file2 = tmp;
+	files = *given_files;
+	// do sort
+	*given_files = files;
+}
+
+void    sort_files_alphabetically(t_file ***given_files)
+{
+	t_file **files;
+
+	files = *given_files;
+	// do sort
+	*given_files = files;
 }
 
 void    sort_files(t_file ***given_files, char *flags)
 {
-	t_file  **files;
-	int     i;
-
-	files = *given_files;
-	i = 0;
-	if (!files[i])
+	if (!**given_files)
 		return ;
-	while (files[i + 1])
-	{
-		mswap(files + i, files +i + 1);
-		i++;
-	}
-	flags++;
+	if (sort_by_modification(flags))
+		sort_files_by_modification(given_files);
+	else
+		sort_files_alphabetically(given_files);
+	if (reverse_sort(flags))
+		reverse_files(given_files);
 }

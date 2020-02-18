@@ -12,6 +12,15 @@
 
 #include "ft_ls.h"
 
+void    swap_files(t_file **file, t_file **file2)
+{
+	t_file  *tmp;
+
+	tmp = *file;
+	*file = *file2;
+	*file2 = tmp;
+}
+
 int     file_is_hidden(char *filename)
 {
 	return ft_starts_with(".", filename);
@@ -28,4 +37,20 @@ char    *full(char *dirname, char *filename)
 int     isdir(t_file *file)
 {
 	return ((file->entry->st_mode & S_IFMT) == S_IFDIR);
+}
+
+void    reverse_files(t_file ***given_files)
+{
+	t_file  **files;
+	int     i;
+	int     count;
+
+	files = *given_files;
+	count = files_count(files);
+	i = 0;
+	while (i + i < count)
+	{
+		swap_files(files + i, files + count - i - 1);
+		i++;
+	}
 }
