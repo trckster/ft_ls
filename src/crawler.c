@@ -21,22 +21,24 @@ int    available_files_count(char *dirname)
 int     set_file(t_file **files, char *pathname, char *name)
 {
 	t_file  *file;
+	char    *tmp;
 
 	file = (t_file *)malloc(sizeof(t_file));
 	file->entry = (struct stat *)malloc(sizeof(struct stat));
+	file->pathname = ft_strdup(pathname);
+	file->filename = ft_strdup(name);
 	if (stat(pathname, file->entry) == -1) {
-		perror("fuck dat"); // TODO: perror normal display
-		free(file->entry);
-		free(file);
+		tmp = ft_sprintf("./ft_ls: cannot access '%s'", file->filename);
+		perror(tmp);
+		free(tmp);
+		free_file(file);
 		return (-1);
 	}
-	file->filename = ft_strdup(name);
-	file->pathname = ft_strdup(pathname);
 	*files = file;
 	return (0);
 }
 
-void    fill_files(char *dirname, t_file ***files)
+int     fill_files(char *dirname, t_file ***files)
 {
 	int             i;
 	int             files_cnt;
@@ -46,8 +48,8 @@ void    fill_files(char *dirname, t_file ***files)
 
 	if (!(dir = opendir(dirname)))
 	{
-		perror("Error opening dir");// TODO: Normalize perror
-		return ; // TODO: change void to int and return -1 if crashes
+		show_error_when_opening_dir(dirname);
+		return (-1);
 	}
 	i = 0;
 	files_cnt = available_files_count(dirname);
@@ -60,6 +62,7 @@ void    fill_files(char *dirname, t_file ***files)
 	}
 	closedir(dir);
 	(*files)[i] = 0;
+	return (0);
 }
 
 void    fill_different_files(char **inputs, t_file ***unprepared_files)
@@ -69,7 +72,7 @@ void    fill_different_files(char **inputs, t_file ***unprepared_files)
 	int     i;
 	int     j;
 
-	valid_files_count = 200;
+	valid_files_count = 200;//TODO ?
 	files = (t_file **)malloc(sizeof(t_file *) * (valid_files_count + 1));
 	i = 0;
 	j = 0;

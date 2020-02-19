@@ -45,13 +45,12 @@ void			spawn_error(char *error);
 void			show_usage(void);
 char            *get_file_owner(char *filename);
 void            display_directory_recursive(t_file *file, char *f);
-void            fill_files(char *dirname, t_file ***stats);
+int             fill_files(char *dirname, t_file ***stats);
 void            display_t_file(t_file *file, char *flags);
 int             set_file(t_file **files, char *pathname, char *name);
 void            fill_different_files(char **files, t_file ***f);
 void            display_t_files(t_file **files, char *f, char type);
 void            display_all_dirs_recursive(t_file **files, char *flags);
-void            free_files(t_file **files);
 void            display_all_dirs_with_content(t_file **files, char *flags);
 int             files_count(t_file **files);
 void            sort_files(t_file ***files, char *flags);
@@ -69,5 +68,12 @@ int             with_meta(char *flags);
 int             recursive(char *flags);
 int             sort_by_modification(char *flags);
 int             reverse_sort(char *flags);
+
+/** Free */
+void            free_files(t_file **files);
+void            free_file(t_file *file);
+
+/** Errors showing */
+void    show_error_when_opening_dir(char *dirname);
 
 #endif

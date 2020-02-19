@@ -6,18 +6,20 @@
 
 #include "ft_ls.h"
 
+void    free_file(t_file *file)
+{
+	free(file->entry);
+	free(file->filename);
+	free(file->pathname);
+	free(file);
+}
+
 void    free_files(t_file **files)
 {
-	int     i;
+	int i;
 
 	i = 0;
 	while (files[i])
-	{
-		free(files[i]->entry);
-		free(files[i]->filename);
-		free(files[i]->pathname);
-		free(files[i]);
-		i++;
-	}
+		free_file(files[i++]);
 	free(files);
 }

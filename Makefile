@@ -26,7 +26,8 @@ SRC = src/main.c \
 	  src/recursive.c \
 	  src/free.c \
 	  src/count_helpers.c \
-	  src/sort.c
+	  src/sort.c \
+	  src/errors.c
 
 LIB = libft
 OBJ = $(SRC:.c=.o)
