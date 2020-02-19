@@ -6,15 +6,35 @@
 
 #include "ft_ls.h"
 
+int     first_file_is_older(t_file *file, t_file *file2)
+{
+	return (file->entry->st_mtime < file2->entry->st_mtime);
+}
+
+/** TODO Needs more tests like ls -rRt */
 void    sort_files_by_modification(t_file ***given_files)
 {
-	t_file **files;
+	t_file  **files;
+	int     i;
+	int     j;
 
 	files = *given_files;
-	// do sort
+	i = 0;
+	while (files[i])
+	{
+		j = i;
+		while (files[j])
+		{
+			if (first_file_is_older(files[i], files[j]))
+				swap_files(files + i, files + j);
+			j++;
+		}
+		i++;
+	}
 	*given_files = files;
 }
 
+/** NEXTODO Check slack about my Q */
 void    sort_files_alphabetically(t_file ***given_files)
 {
 	t_file  **files;
