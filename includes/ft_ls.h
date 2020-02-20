@@ -35,6 +35,16 @@ typedef struct  s_file
 	struct stat *entry;
 }               t_file;
 
+typedef struct  s_file_extra_data
+{
+	char    *privileges;
+	int     links_count;
+	char    *owner_name;
+	char    *owner_group;
+	int     file_size;
+	char    *last_modification;
+}               t_file_extra_data;
+
 t_arguments		*parse_arguments(int argc, char **argv);
 int				determine_flags_arguments_count(int argc, char **argv);
 char			*parse_flags(char **argv, int flags_count);

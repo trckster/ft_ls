@@ -14,10 +14,16 @@
 
 void	display_t_file_with_meta(t_file *file)
 {
+	t_file_extra_data   *data;
+
+	// TODO write this func
+	data = init_file_extra_data(file);
 	// TODO: end it!
 	ft_printf(">>> File owner: %s -------- ----------- :: %s\n",
 	          get_file_owner(file->pathname),
 	          file->pathname);
+	// TODO write this func too
+	free_file_extra_data(data);
 }
 
 void    display_t_file(t_file *file, char *flags)
@@ -41,6 +47,7 @@ void    display_dir_content(t_file *file, char *flags)
 
 	fill_files(file->pathname, &files);
 	sort_files(&files, flags);
+
 	display_t_files(files, flags, 'a');
 }
 
