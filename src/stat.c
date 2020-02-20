@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-char        *get_file_owner(char *filename)
+char                *get_file_owner(char *filename)
 {
 	struct stat     entry;
 	struct passwd   *pw;
@@ -22,3 +22,18 @@ char        *get_file_owner(char *filename)
 	return pw->pw_name;
 }
 
+t_file_extra_data   *init_file_extra_data(t_file *file)
+{
+	t_file_extra_data   *data;
+
+	data = (t_file_extra_data *)malloc(sizeof(t_file_extra_data));
+	/** TODO End it all */
+	data->privileges = ft_strdup("-rw-rw-r--");
+	data->links_count = 3;
+	data->owner_name = ft_strdup("trickster");
+	data->owner_group = ft_strdup("trickster");
+	data->file_size = ft_strlen(file->filename);
+	data->last_modification = ft_strdup("Jan 22 21:34");
+
+	return (data);
+}

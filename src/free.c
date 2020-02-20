@@ -23,3 +23,9 @@ void    free_files(t_file **files)
 		free_file(files[i++]);
 	free(files);
 }
+
+void    free_file_extra_data(t_file_extra_data *data)
+{
+	/** TODO end it */
+	free(data);
+}

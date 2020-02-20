@@ -21,7 +21,7 @@ void	display_t_file_with_meta(t_file *file)
 	// TODO: end it!
 	ft_printf(">>> File owner: %s -------- ----------- :: %s\n",
 	          get_file_owner(file->pathname),
-	          file->pathname);
+	          file->filename);
 	// TODO write this func too
 	free_file_extra_data(data);
 }
