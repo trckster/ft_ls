@@ -28,6 +28,14 @@ typedef struct	s_arguments
 	char *flags;
 }				t_arguments;
 
+typedef struct  s_indentations
+{
+	int link_size;
+	int owner_name_size;
+	int owner_group_size;
+	int file_size_size;
+}               t_indentations;
+
 typedef struct  s_file_extra_data
 {
 	char    *privileges;
@@ -44,6 +52,7 @@ typedef struct  s_file
 	char                *pathname;
 	struct stat         *entry;
 	t_file_extra_data   *extra;
+	t_indentations      *indentations;
 }               t_file;
 
 t_arguments	    	*parse_arguments(int argc, char **argv);
