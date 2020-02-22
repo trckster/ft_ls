@@ -8,6 +8,7 @@
 
 void    free_file(t_file *file)
 {
+	free_file_extra_data(file->extra);
 	free(file->entry);
 	free(file->filename);
 	free(file->pathname);
@@ -26,6 +27,9 @@ void    free_files(t_file **files)
 
 void    free_file_extra_data(t_file_extra_data *data)
 {
-	/** TODO end it */
+	free(data->privileges);
+	free(data->owner_name);
+	free(data->owner_group);
+	free(data->last_modification);
 	free(data);
 }

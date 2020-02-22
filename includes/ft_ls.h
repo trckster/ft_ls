@@ -28,13 +28,6 @@ typedef struct	s_arguments
 	char *flags;
 }				t_arguments;
 
-typedef struct  s_file
-{
-	char        *filename;
-	char        *pathname;
-	struct stat *entry;
-}               t_file;
-
 typedef struct  s_file_extra_data
 {
 	char    *privileges;
@@ -44,6 +37,14 @@ typedef struct  s_file_extra_data
 	int     file_size;
 	char    *last_modification;
 }               t_file_extra_data;
+
+typedef struct  s_file
+{
+	char                *filename;
+	char                *pathname;
+	struct stat         *entry;
+	t_file_extra_data   *extra;
+}               t_file;
 
 t_arguments	    	*parse_arguments(int argc, char **argv);
 int				    determine_flags_arguments_count(int argc, char **argv);
