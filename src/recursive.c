@@ -6,6 +6,29 @@
 
 #include "ft_ls.h"
 
+int     need_total_display(t_file **files, char type)
+{
+	int i;
+	int displayed_count;
+
+	i = 0;
+	displayed_count = 0;
+	while (files[i])
+	{
+		displayed_count += 1;
+		if (type == 'a')
+			;
+		else if (type == 'd' && isdir(files[i]))
+			;
+		else if (type == 'f' && !isdir(files[i]))
+			;
+		else
+			displayed_count -= 1;
+		i++;
+	}
+	return (displayed_count);
+}
+
 int     display_t_files(t_file **files, char *flags, char type)
 {
 	int i;
@@ -13,6 +36,8 @@ int     display_t_files(t_file **files, char *flags, char type)
 
 	i = 0;
 	displayed_count = 0;
+	if (with_meta(flags) && need_total_display(files, type))
+		display_total(files, flags);
 	while (files[i])
 	{
 		displayed_count += 1;

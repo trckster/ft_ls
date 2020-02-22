@@ -12,6 +12,22 @@
 
 #include "ft_ls.h"
 
+void                display_total(t_file **files, char *flags)
+{
+	int total;
+	int i;
+
+	total = 0;
+	i = 0;
+	while (files[i])
+	{
+		if (with_hidden(flags) || !file_is_hidden(files[i]->filename))
+			total += files[i]->entry->st_blocks;
+		i++;
+	}
+	ft_printf("total %d\n", total);
+}
+
 char                *get_file_owner(char *filename)
 {
 	struct stat     entry;
