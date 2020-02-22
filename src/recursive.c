@@ -6,7 +6,7 @@
 
 #include "ft_ls.h"
 
-void    display_t_files(t_file **files, char *flags, char type)
+int     display_t_files(t_file **files, char *flags, char type)
 {
 	int i;
 	int displayed_count;
@@ -28,14 +28,16 @@ void    display_t_files(t_file **files, char *flags, char type)
 	}
 	if (displayed_count && !with_meta(flags))
 		ft_putchar('\n');
+	return (displayed_count);
 }
 
-void    display_directory_recursive(t_file *file, char *flags)
+void    display_directory_recursive(t_file *file, char *flags, int break_space)
 {
 	t_file  **files;
 	int     i;
 
-	ft_putchar('\n');
+	if (break_space)
+		ft_putchar('\n');
 	ft_printf("%s:\n", file->pathname);
 	fill_files(file->pathname, &files);
 	sort_files(&files, flags);
@@ -50,7 +52,7 @@ void    display_directory_recursive(t_file *file, char *flags)
 		}
 		if (isdir(files[i]))
 			if (with_hidden(flags) || !file_is_hidden(files[i]->filename))
-				display_directory_recursive(files[i], flags);
+				display_directory_recursive(files[i], flags, 1);
 		i++;
 	}
 	free_files(files);
@@ -64,7 +66,7 @@ void    display_all_dirs_recursive(t_file **files, char *flags)
 	while (files[i])
 	{
 		if (isdir(files[i]))
-			display_directory_recursive(files[i], flags);
+			display_directory_recursive(files[i], flags, i);
 		i++;
 	}
 }
