@@ -98,4 +98,6 @@ void                free_file_extra_data(t_file_extra_data *data);
 /** Errors showing */
 void                show_error_when_opening_dir(char *dirname);
 
+void                set_files_indentations(t_file **f);
+
 #endif
