@@ -63,7 +63,7 @@ int     fill_files(char *dirname, t_file ***files)
 	}
 	closedir(dir);
 	(*files)[i] = 0;
-	set_files_indentations(files);
+	set_files_indentations(*files);
 	return (0);
 }
 

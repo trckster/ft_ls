@@ -70,7 +70,8 @@ SRC = ft_atoi.c \
 		ft_chrcjoin.c \
 		ft_printf.c \
 		ft_sprintf.c \
-		ft_errprintf.c
+		ft_errprintf.c \
+		ft_nbrlen.c
 
 OBJ = $(SRC:.c=.o)
 
