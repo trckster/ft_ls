@@ -40,6 +40,8 @@ char	*ft_strstr(const char *h, const char *n);
 char	*ft_strnstr(const char *h, const char *n, size_t l);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char    *ft_ljoin(char *s, int n, char c);
+char    *ft_rjoin(char *s, int n, char c);
 int		ft_atoi(const char *str);
 int		ft_isalpha(int a);
 int		ft_isdigit(int a);
@@ -51,6 +53,7 @@ int		ft_tolower(int a);
 
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
+
 char	*ft_strnew(size_t size);
 char    *ft_strfill(int n, char c);
 void	ft_strdel(char **as);
@@ -65,6 +68,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
+
 char	*ft_itoa(int n);
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);

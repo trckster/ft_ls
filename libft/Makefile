@@ -72,7 +72,9 @@ SRC = ft_atoi.c \
 		ft_sprintf.c \
 		ft_errprintf.c \
 		ft_nbrlen.c \
-		ft_strfill.c
+		ft_strfill.c \
+		ft_rjust.c \
+		ft_ljust.c
 
 OBJ = $(SRC:.c=.o)
 
