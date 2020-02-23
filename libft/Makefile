@@ -71,7 +71,8 @@ SRC = ft_atoi.c \
 		ft_printf.c \
 		ft_sprintf.c \
 		ft_errprintf.c \
-		ft_nbrlen.c
+		ft_nbrlen.c \
+		ft_strfill.c
 
 OBJ = $(SRC:.c=.o)
 
