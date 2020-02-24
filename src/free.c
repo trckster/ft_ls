@@ -41,3 +41,15 @@ void    free_file_without_extra(t_file *file)
 	free(file->pathname);
 	free(file);
 }
+
+void    free_arguments(t_arguments *a)
+{
+	int i;
+
+	i = 0;
+	free(a->flags);
+	while (a->input_files[i])
+		free(a->input_files[i++]);
+	free(a->input_files);
+	free(a);
+}

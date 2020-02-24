@@ -17,8 +17,10 @@ int		main(int argc, char **argv)
 	t_arguments *arguments;
 
 	arguments = parse_arguments(argc, argv);
-	if (!arguments || !check_flags(arguments))
+	if (!arguments)
 		return (0);
-	process_ls(arguments);
+	if (check_flags(arguments))
+		process_ls(arguments);
+	free_arguments(arguments);
 	return (0);
 }

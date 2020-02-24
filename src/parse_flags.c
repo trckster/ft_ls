@@ -61,14 +61,14 @@ char		bad_flags(char *s)
 int check_flags(t_arguments *arguments)
 {
 	char bad_char;
+	char *tmp;
 
 	bad_char = bad_flags(arguments->flags);
 	if (bad_char)
 	{
-		free(arguments->flags);
-		free(arguments->input_files);
-		free(arguments);
-		spawn_error(ft_sprintf("illegal option -- %c", bad_char));
+		tmp = ft_sprintf("illegal option -- %c", bad_char);
+		spawn_error(tmp);
+		free(tmp);
 		show_usage();
 		return (0);
 	}
