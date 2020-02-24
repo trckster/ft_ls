@@ -19,6 +19,7 @@
 # include <dirent.h>
 # include <sys/stat.h>
 # include <pwd.h>
+# include <grp.h>
 
 # define AVAILABLE_FLAGS "alrtR"
 
@@ -63,7 +64,6 @@ int			    	check_flags(t_arguments *arguments);
 void			    process_ls(t_arguments *);
 void    			spawn_error(char *error);
 void	    		show_usage(void);
-char                *get_file_owner(char *filename);
 int                 fill_files(char *dirname, t_file ***stats);
 void                display_t_file(t_file *file, char *flags);
 int                 set_file(t_file **files, char *pathname, char *name);

@@ -28,14 +28,16 @@ void                display_total(t_file **files, char *flags)
 	ft_printf("total %d\n", total);
 }
 
-char                *get_file_owner(char *filename)
+void                set_owner_info(t_file *file, t_file_extra_data *data)
 {
-	struct stat     entry;
 	struct passwd   *pw;
+	struct group    *gr;
 
-	stat(filename, &entry);
-	pw = getpwuid(entry.st_uid);
-	return pw->pw_name;
+	stat(file->pathname, file->entry);
+	pw = getpwuid(file->entry->st_uid);
+	gr = getgrgid(file->entry->st_gid);
+	data->owner_name = ft_strdup(pw->pw_name);
+	data->owner_group = ft_strdup(gr->gr_name);
 }
 
 t_file_extra_data   *init_file_extra_data(t_file *file)
@@ -44,10 +46,9 @@ t_file_extra_data   *init_file_extra_data(t_file *file)
 
 	data = (t_file_extra_data *)malloc(sizeof(t_file_extra_data));
 	/** TODO End it all */
-	data->privileges = ft_strdup("-rw-rw-r--@?");
+	data->privileges = ft_strdup("-rw-rw-r--");
 	data->links_count = ft_strlen(file->filename) * 10;
-	data->owner_name = ft_strdup("trickster");
-	data->owner_group = ft_strdup("root---group");
+	set_owner_info(file, data);
 	data->file_size = ft_strlen(file->filename);
 	data->last_modification = ft_strdup("Jan 22 21:34");
 

@@ -24,7 +24,7 @@ void	display_t_file_with_meta(t_file *file)
 	owner_group_prepared = prepare_group(file);
 	file_size_prepared = prepare_size(file);
 	ft_printf(
-			"%s %s | %s %s | %s %s | %s\n",
+			"%s %s %s %s %s %s %s\n",
 			file->extra->privileges,
 			links_count_prepared,
 			owner_name_prepared,
