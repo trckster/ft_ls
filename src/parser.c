@@ -38,7 +38,7 @@ t_arguments	*parse_arguments(int argc, char **argv)
 {
 	t_arguments	*res;
 
-	res = (t_arguments *)ft_memalloc(sizeof(res));
+	res = (t_arguments *)ft_memalloc(sizeof(t_arguments));
 	if (argc - 1)
 		process_parsing(res, argc, argv);
 	else
