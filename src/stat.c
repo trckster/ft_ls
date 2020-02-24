@@ -40,6 +40,17 @@ void                set_owner_info(t_file *file, t_file_extra_data *data)
 	data->owner_group = ft_strdup(gr->gr_name);
 }
 
+char                *get_last_modification_time(t_file *file)
+{
+	char    *full;
+	char    *res;
+
+	full = ft_strdup(ctime(&(file->entry->st_mtime)));
+	res = ft_strsub(full, 4, 12);
+	free(full);
+	return (res);
+}
+
 t_file_extra_data   *init_file_extra_data(t_file *file)
 {
 	t_file_extra_data   *data;
@@ -47,10 +58,9 @@ t_file_extra_data   *init_file_extra_data(t_file *file)
 	data = (t_file_extra_data *)malloc(sizeof(t_file_extra_data));
 	/** TODO End it all */
 	data->privileges = get_privileges(file);
-	data->links_count = ft_strlen(file->filename) * 10;
+	data->links_count = file->entry->st_nlink;
 	set_owner_info(file, data);
-	data->file_size = ft_strlen(file->filename);
-	data->last_modification = ft_strdup("Jan 22 21:34");
-
+	data->file_size = file->entry->st_size;
+	data->last_modification = get_last_modification_time(file);
 	return (data);
 }
