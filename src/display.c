@@ -12,6 +12,21 @@
 
 #include "ft_ls.h"
 
+void    display_with_link(t_file *file)
+{
+	char    *buf;
+	int     len;
+
+	ft_printf("%s", file->filename);
+	if (!S_ISLNK(file->entry->st_mode & S_IFMT))
+		return ;
+	buf = (char *)malloc(sizeof(char) * 2049);
+	if ((len = readlink(file->pathname, buf, 2049)) != -1)
+		buf[len] = 0;
+	ft_printf(" -> %s", buf);
+	free(buf);
+}
+
 void	display_t_file_with_meta(t_file *file)
 {
 	char    *links_count_prepared;
@@ -24,15 +39,16 @@ void	display_t_file_with_meta(t_file *file)
 	owner_group_prepared = prepare_group(file);
 	file_size_prepared = prepare_size(file);
 	ft_printf(
-			"%s %s %s %s %s %s %s\n",
+			"%s %s %s %s %s %s ",
 			file->extra->privileges,
 			links_count_prepared,
 			owner_name_prepared,
 			owner_group_prepared,
 			file_size_prepared,
-			file->extra->last_modification,
-			file->filename
+			file->extra->last_modification
 			);
+	display_with_link(file);
+	ft_putchar('\n');
 	free(links_count_prepared);
 	free(owner_name_prepared);
 	free(owner_group_prepared);
@@ -77,6 +93,8 @@ void    display_all_dirs_with_content(t_file **files, char *flags)
 	{
 		if (isdir(files[i]))
 		{
+			if (i)
+				ft_putchar('\n');
 			if (show_preview)
 				ft_printf("%s:\n", files[i]->filename);
 			display_dir_content(files[i], flags);
