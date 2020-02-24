@@ -8,11 +8,25 @@
 
 char    determine_file_type(t_file *file)
 {
-	// TODO hello
-	if (isdir(file))
+	int file_type;
+
+	file_type = file->entry->st_mode & S_IFMT;
+	if (S_ISDIR(file_type))
 		return ('d');
-	else
+	else if (S_ISLNK(file_type))
+		return ('l');
+	else if (S_ISREG(file_type))
 		return ('-');
+	else if (S_ISFIFO(file_type))
+		return ('p');
+	else if (S_ISCHR(file_type))
+		return ('c');
+	else if (S_ISBLK(file_type))
+		return ('b');
+	else if (S_ISSOCK(file_type))
+		return ('s');//TODO problem
+	else
+		return ('?');
 }
 
 char    *get_privileges(t_file *file)

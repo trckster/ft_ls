@@ -56,7 +56,6 @@ t_file_extra_data   *init_file_extra_data(t_file *file)
 	t_file_extra_data   *data;
 
 	data = (t_file_extra_data *)malloc(sizeof(t_file_extra_data));
-	/** TODO End it all */
 	data->privileges = get_privileges(file);
 	data->links_count = file->entry->st_nlink;
 	set_owner_info(file, data);
