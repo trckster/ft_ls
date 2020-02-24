@@ -58,7 +58,8 @@ void    display_dir_content(t_file *file, char *flags)
 {
 	t_file  **files;
 
-	fill_files(file->pathname, &files);
+	if (fill_files(file->pathname, &files) == -1)
+		return ;
 	sort_files(&files, flags);
 
 	display_t_files(files, flags, 'a');

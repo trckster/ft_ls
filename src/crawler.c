@@ -14,8 +14,22 @@
 
 int    available_files_count(char *dirname)
 {
-	dirname++;
-	return 200; // TODO: Hardcoded now, must be WRITTEN OF COURSE
+	int             i;
+	char            *temp;
+	DIR             *dir;
+	struct dirent   *dp;
+	struct stat     entry;
+
+	dir = opendir(dirname);
+	i = 0;
+	while ((dp = readdir(dir))) {
+		temp = full(dirname, dp->d_name);
+		if (stat(temp, &entry) != -1)
+			i++;
+		free(temp);
+	}
+	closedir(dir);
+	return (i);
 }
 
 int     set_file(t_file **files, char *pathname, char *name)
@@ -23,15 +37,15 @@ int     set_file(t_file **files, char *pathname, char *name)
 	t_file  *file;
 	char    *tmp;
 
-	file = (t_file *)malloc(sizeof(t_file));
-	file->entry = (struct stat *)malloc(sizeof(struct stat));
+	file = (t_file *)ft_memalloc(sizeof(t_file));
+	file->entry = (struct stat *)ft_memalloc(sizeof(struct stat));
 	file->pathname = ft_strdup(pathname);
 	file->filename = ft_strdup(name);
 	if (stat(pathname, file->entry) == -1) {
 		tmp = ft_sprintf("./ft_ls: cannot access '%s'", file->filename);
 		perror(tmp);
 		free(tmp);
-		free_file(file);
+		free_file_without_extra(file);
 		return (-1);
 	}
 	file->extra = init_file_extra_data(file);

@@ -23,7 +23,14 @@ void    swap_files(t_file **file, t_file **file2)
 
 int     file_is_hidden(char *filename)
 {
-	return ft_starts_with(".", filename);
+	int starts_with_dot;
+	int starts_with_dir_dot;
+	int starts_with_dir_2dot;
+
+	starts_with_dot = ft_starts_with(".", filename);
+	starts_with_dir_dot = ft_starts_with("./", filename);
+	starts_with_dir_2dot = ft_starts_with("../", filename);
+	return (starts_with_dot && !(starts_with_dir_2dot || starts_with_dir_dot));
 }
 
 char    *full(char *dirname, char *filename)

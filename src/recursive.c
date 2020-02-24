@@ -64,7 +64,8 @@ void    display_directory_recursive(t_file *file, char *flags, int break_space)
 	if (break_space)
 		ft_putchar('\n');
 	ft_printf("%s:\n", file->pathname);
-	fill_files(file->pathname, &files);
+	if (fill_files(file->pathname, &files) == -1)
+		return ;
 	sort_files(&files, flags);
 	display_t_files(files, flags, 'a');
 	i = 0;

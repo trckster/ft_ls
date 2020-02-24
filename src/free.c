@@ -9,10 +9,10 @@
 void    free_file(t_file *file)
 {
 	free_file_extra_data(file->extra);
-	if (file->entry)
-		free(file->entry);
+	free(file->entry);
 	free(file->filename);
 	free(file->pathname);
+	free(file->indentations);
 	free(file);
 }
 
@@ -33,4 +33,11 @@ void    free_file_extra_data(t_file_extra_data *data)
 	free(data->owner_group);
 	free(data->last_modification);
 	free(data);
+}
+
+void    free_file_without_extra(t_file *file)
+{
+	free(file->filename);
+	free(file->pathname);
+	free(file);
 }

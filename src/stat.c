@@ -36,8 +36,14 @@ void                set_owner_info(t_file *file, t_file_extra_data *data)
 	stat(file->pathname, file->entry);
 	pw = getpwuid(file->entry->st_uid);
 	gr = getgrgid(file->entry->st_gid);
-	data->owner_name = ft_strdup(pw->pw_name);
-	data->owner_group = ft_strdup(gr->gr_name);
+	if (pw)
+		data->owner_name = ft_strdup(pw->pw_name);
+	else
+		data->owner_name = ft_itoa(file->entry->st_uid);
+	if (gr)
+		data->owner_group = ft_strdup(gr->gr_name);
+	else
+		data->owner_group = ft_itoa(file->entry->st_gid);
 }
 
 char                *get_last_modification_time(t_file *file)

@@ -96,6 +96,7 @@ int                 reverse_sort(char *flags);
 void                free_files(t_file **files);
 void                free_file(t_file *file);
 void                free_file_extra_data(t_file_extra_data *data);
+void                free_file_without_extra(t_file *file);
 
 /** Errors showing */
 void                show_error_when_opening_dir(char *dirname);
