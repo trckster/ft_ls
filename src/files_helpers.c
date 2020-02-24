@@ -37,12 +37,15 @@ char    *full(char *dirname, char *filename)
 {
 	char    *with_slash;
 	int     i;
+	char    *res;
 
 	i = ft_strlen(dirname) - 1;
 	while (dirname[i] == '/' && i >= 0)
 		dirname[i--] = 0;
 	with_slash = ft_strjoin(dirname, "/");
-	return ft_strjoin(with_slash, filename);
+	res = ft_strjoin(with_slash, filename);
+	free(with_slash);
+	return (res);
 }
 
 int     isdir(t_file *file)

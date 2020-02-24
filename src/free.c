@@ -37,8 +37,10 @@ void    free_file_extra_data(t_file_extra_data *data)
 
 void    free_file_without_extra(t_file *file)
 {
+	free(file->entry);
 	free(file->filename);
 	free(file->pathname);
+	free(file->indentations);
 	free(file);
 }
 
