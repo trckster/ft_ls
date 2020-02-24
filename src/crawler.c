@@ -81,6 +81,16 @@ int     fill_files(char *dirname, t_file ***files)
 	return (0);
 }
 
+int     count_input_files(char **s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
 void    fill_different_files(char **inputs, t_file ***unprepared_files)
 {
 	t_file  **files;
@@ -88,7 +98,7 @@ void    fill_different_files(char **inputs, t_file ***unprepared_files)
 	int     i;
 	int     j;
 
-	valid_files_count = 200;//TODO ?
+	valid_files_count = count_input_files(inputs);
 	files = (t_file **)malloc(sizeof(t_file *) * (valid_files_count + 1));
 	i = 0;
 	j = 0;

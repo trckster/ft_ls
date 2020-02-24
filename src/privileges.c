@@ -24,7 +24,7 @@ char    determine_file_type(t_file *file)
 	else if (S_ISBLK(file_type))
 		return ('b');
 	else if (S_ISSOCK(file_type))
-		return ('s');//TODO problem
+		return ('s');
 	else
 		return ('?');
 }
