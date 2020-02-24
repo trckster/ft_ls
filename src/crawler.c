@@ -27,7 +27,6 @@ int     set_file(t_file **files, char *pathname, char *name)
 	file->entry = (struct stat *)malloc(sizeof(struct stat));
 	file->pathname = ft_strdup(pathname);
 	file->filename = ft_strdup(name);
-	file->extra = init_file_extra_data(file);
 	if (stat(pathname, file->entry) == -1) {
 		tmp = ft_sprintf("./ft_ls: cannot access '%s'", file->filename);
 		perror(tmp);
@@ -35,6 +34,7 @@ int     set_file(t_file **files, char *pathname, char *name)
 		free_file(file);
 		return (-1);
 	}
+	file->extra = init_file_extra_data(file);
 	*files = file;
 	return (0);
 }

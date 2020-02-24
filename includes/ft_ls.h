@@ -75,6 +75,7 @@ int                 files_count(t_file **files);
 void                sort_files(t_file ***files, char *flags);
 t_file_extra_data   *init_file_extra_data(t_file *file);
 void                display_total(t_file **files, char *flags);
+char                *get_privileges(t_file *file);
 
 /** Files helpers */
 void                swap_files(t_file **file, t_file **file2);

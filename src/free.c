@@ -9,7 +9,8 @@
 void    free_file(t_file *file)
 {
 	free_file_extra_data(file->extra);
-	free(file->entry);
+	if (file->entry)
+		free(file->entry);
 	free(file->filename);
 	free(file->pathname);
 	free(file);
