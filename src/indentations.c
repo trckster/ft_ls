@@ -13,9 +13,8 @@ void    set_indentations(t_file *file, t_indentations *base)
 	ind = (t_indentations *)malloc(sizeof(t_indentations));
 	ind->link_size = base->link_size;
 	ind->owner_name_size = base->owner_name_size;
-	ind->owner_name_size = base->owner_group_size;
+	ind->owner_group_size = base->owner_group_size;
 	ind->file_size_size = base->file_size_size;
-
 	file->indentations = ind;
 }
 
@@ -80,7 +79,7 @@ void    set_file_size_size(t_indentations *ind, t_file **files)
 			max_size = curr;
 		i++;
 	}
-	ind->link_size = max_size;
+	ind->file_size_size = max_size;
 }
 
 void    set_files_indentations(t_file **files)

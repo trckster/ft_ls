@@ -98,6 +98,12 @@ void                free_file_extra_data(t_file_extra_data *data);
 /** Errors showing */
 void                show_error_when_opening_dir(char *dirname);
 
+/** Indentations preparing */
+char                *prepare_links_count(t_file *f);
+char                *prepare_name(t_file *f);
+char                *prepare_group(t_file *f);
+char                *prepare_size(t_file *f);
+
 void                set_files_indentations(t_file **f);
 
 #endif

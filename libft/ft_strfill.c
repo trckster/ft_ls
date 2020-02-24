@@ -12,6 +12,7 @@ char    *ft_strfill(int n, char c)
 	int     i;
 
 	res = (char *)(malloc(sizeof(char) * (n + 1)));
+	i = 0;
 	while (i < n)
 	{
 		res[i] = c;

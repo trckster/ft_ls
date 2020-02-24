@@ -45,7 +45,7 @@ t_file_extra_data   *init_file_extra_data(t_file *file)
 	data = (t_file_extra_data *)malloc(sizeof(t_file_extra_data));
 	/** TODO End it all */
 	data->privileges = ft_strdup("-rw-rw-r--@?");
-	data->links_count = 3;
+	data->links_count = ft_strlen(file->filename) * 10;
 	data->owner_name = ft_strdup("trickster");
 	data->owner_group = ft_strdup("root---group");
 	data->file_size = ft_strlen(file->filename);

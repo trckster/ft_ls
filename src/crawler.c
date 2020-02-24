@@ -85,5 +85,6 @@ void    fill_different_files(char **inputs, t_file ***unprepared_files)
 		j++;
 	}
 	files[i] = 0;
+	set_files_indentations(files);
 	*unprepared_files = files;
 }

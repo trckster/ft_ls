@@ -14,16 +14,29 @@
 
 void	display_t_file_with_meta(t_file *file)
 {
-	t_file_extra_data   *data;
+	char    *links_count_prepared;
+	char    *owner_name_prepared;
+	char    *owner_group_prepared;
+	char    *file_size_prepared;
 
-	// TODO write this func
-	data = init_file_extra_data(file);
-	// TODO: end it!
-	ft_printf(">>> File owner: %s -------- ----------- :: %s\n",
-	          get_file_owner(file->pathname),
-	          file->filename);
-	// TODO write this func too
-	free_file_extra_data(data);
+	links_count_prepared = prepare_links_count(file);
+	owner_name_prepared = prepare_name(file);
+	owner_group_prepared = prepare_group(file);
+	file_size_prepared = prepare_size(file);
+	ft_printf(
+			"%s %s | %s %s | %s %s | %s\n",
+			file->extra->privileges,
+			links_count_prepared,
+			owner_name_prepared,
+			owner_group_prepared,
+			file_size_prepared,
+			file->extra->last_modification,
+			file->filename
+			);
+	free(links_count_prepared);
+	free(owner_name_prepared);
+	free(owner_group_prepared);
+	free(file_size_prepared);
 }
 
 void    display_t_file(t_file *file, char *flags)
@@ -49,6 +62,7 @@ void    display_dir_content(t_file *file, char *flags)
 	sort_files(&files, flags);
 
 	display_t_files(files, flags, 'a');
+	free_files(files);
 }
 
 void    display_all_dirs_with_content(t_file **files, char *flags)

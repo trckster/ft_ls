@@ -17,8 +17,9 @@ char    *ft_ljust(char *s, int n, char c)
 	first_part = ft_strdup(s);
 	if (base_len >= n)
 		return (first_part);
-	second_part = ft_strfill(base_len - n, c);
+	second_part = ft_strfill(n - base_len, c);
 	res = ft_strjoin(first_part, second_part);
 	free(second_part);
+	free(first_part);
 	return (res);
 }

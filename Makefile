@@ -28,7 +28,8 @@ SRC = src/main.c \
 	  src/count_helpers.c \
 	  src/sort.c \
 	  src/errors.c \
-	  src/indentations.c
+	  src/indentations.c \
+	  src/indentations_builder.c
 
 LIB = libft
 OBJ = $(SRC:.c=.o)
