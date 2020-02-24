@@ -33,7 +33,6 @@ void                set_owner_info(t_file *file, t_file_extra_data *data)
 	struct passwd   *pw;
 	struct group    *gr;
 
-	stat(file->pathname, file->entry);
 	pw = getpwuid(file->entry->st_uid);
 	gr = getgrgid(file->entry->st_gid);
 	if (pw)

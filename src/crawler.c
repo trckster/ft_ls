@@ -24,7 +24,7 @@ int    available_files_count(char *dirname)
 	i = 0;
 	while ((dp = readdir(dir))) {
 		temp = full(dirname, dp->d_name);
-		if (stat(temp, &entry) != -1)
+		if (lstat(temp, &entry) != -1)
 			i++;
 		free(temp);
 	}
@@ -41,7 +41,7 @@ int     set_file(t_file **files, char *pathname, char *name)
 	file->entry = (struct stat *)ft_memalloc(sizeof(struct stat));
 	file->pathname = ft_strdup(pathname);
 	file->filename = ft_strdup(name);
-	if (stat(pathname, file->entry) == -1) {
+	if (lstat(pathname, file->entry) == -1) {
 		tmp = ft_sprintf("./ft_ls: cannot access '%s'", file->filename);
 		perror(tmp);
 		free(tmp);
