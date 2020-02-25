@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:39:37 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 16:40:28 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/02/25 14:33:19 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_errprintf(char *pattern, ...)
 {
 	va_list		args;
-	int 		i;
+	int			i;
 
 	va_start(args, pattern);
 	i = 0;
@@ -37,6 +37,5 @@ void	ft_errprintf(char *pattern, ...)
 			ft_putchar_fd(pattern[i], 2);
 		i++;
 	}
-
 	va_end(args);
 }

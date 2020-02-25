@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 16:12:09 by bkayleen          #+#    #+#             */
-/*   Updated: 2019/12/07 16:12:11 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/02/25 14:31:24 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_printf(char *pattern, ...)
 {
 	va_list		args;
-	int 		i;
+	int			i;
 
 	va_start(args, pattern);
 	i = 0;
@@ -37,6 +37,5 @@ void	ft_printf(char *pattern, ...)
 			ft_putchar(pattern[i]);
 		i++;
 	}
-
 	va_end(args);
 }

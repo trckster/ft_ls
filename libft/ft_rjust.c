@@ -1,17 +1,23 @@
-/**
- *
- * Header
- *
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rjust.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/25 14:30:20 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/02/25 14:30:34 by bkayleen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_rjust(char *s, int n, char c)
+char	*ft_rjust(char *s, int n, char c)
 {
-	char    *res;
-	int     base_len;
-	char    *first_part;
-	char    *second_part;
+	char	*res;
+	int		base_len;
+	char	*first_part;
+	char	*second_part;
 
 	base_len = ft_strlen(s);
 	second_part = ft_strdup(s);
