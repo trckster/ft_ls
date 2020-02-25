@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:36:06 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 23:37:18 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/02/25 14:15:02 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ char                *prepare_group(t_file *f);
 char                *prepare_size(t_file *f);
 
 void                set_files_indentations(t_file **f);
+int					is_default_dir(char *filename);
 
 #endif

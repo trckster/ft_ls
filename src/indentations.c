@@ -1,14 +1,20 @@
-/**
- *
- * Headers
- *
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   indentations.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/25 14:06:01 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/02/25 14:06:03 by bkayleen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void    set_indentations(t_file *file, t_indentations *base)
+void	set_indentations(t_file *file, t_indentations *base)
 {
-	t_indentations   *ind;
+	t_indentations	*ind;
 
 	ind = (t_indentations *)malloc(sizeof(t_indentations));
 	ind->link_size = base->link_size;
@@ -18,7 +24,7 @@ void    set_indentations(t_file *file, t_indentations *base)
 	file->indentations = ind;
 }
 
-void    set_link_size(t_indentations *ind, t_file **files)
+void	set_link_size(t_indentations *ind, t_file **files)
 {
 	int i;
 	int max_size;
@@ -36,7 +42,7 @@ void    set_link_size(t_indentations *ind, t_file **files)
 	ind->link_size = max_size;
 }
 
-void    set_owner_sizes(t_indentations *ind, t_file **files)
+void	set_owner_sizes(t_indentations *ind, t_file **files)
 {
 	int i;
 	int max_size;
@@ -64,7 +70,7 @@ void    set_owner_sizes(t_indentations *ind, t_file **files)
 	ind->owner_group_size = max_size;
 }
 
-void    set_file_size_size(t_indentations *ind, t_file **files)
+void	set_file_size_size(t_indentations *ind, t_file **files)
 {
 	int i;
 	int max_size;
@@ -82,10 +88,10 @@ void    set_file_size_size(t_indentations *ind, t_file **files)
 	ind->file_size_size = max_size;
 }
 
-void    set_files_indentations(t_file **files)
+void	set_files_indentations(t_file **files)
 {
-	t_indentations  *indentations;
-	int             i;
+	t_indentations	*indentations;
+	int				i;
 
 	indentations = (t_indentations *)malloc(sizeof(t_indentations));
 	set_link_size(indentations, files);

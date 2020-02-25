@@ -1,12 +1,18 @@
-/**
- *
- * Header
- *
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/25 14:04:27 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/02/25 14:05:00 by bkayleen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void    free_file(t_file *file)
+void	free_file(t_file *file)
 {
 	free_file_extra_data(file->extra);
 	free(file->entry);
@@ -16,7 +22,7 @@ void    free_file(t_file *file)
 	free(file);
 }
 
-void    free_files(t_file **files)
+void	free_files(t_file **files)
 {
 	int i;
 
@@ -26,7 +32,7 @@ void    free_files(t_file **files)
 	free(files);
 }
 
-void    free_file_extra_data(t_file_extra_data *data)
+void	free_file_extra_data(t_file_extra_data *data)
 {
 	free(data->privileges);
 	free(data->owner_name);
@@ -35,7 +41,7 @@ void    free_file_extra_data(t_file_extra_data *data)
 	free(data);
 }
 
-void    free_file_without_extra(t_file *file)
+void	free_file_without_extra(t_file *file)
 {
 	free(file->entry);
 	free(file->filename);
@@ -44,7 +50,7 @@ void    free_file_without_extra(t_file *file)
 	free(file);
 }
 
-void    free_arguments(t_arguments *a)
+void	free_arguments(t_arguments *a)
 {
 	int i;
 

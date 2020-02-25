@@ -1,12 +1,18 @@
-/**
- *
- * Header
- *
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   recursive.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/25 14:09:25 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/02/25 14:15:00 by bkayleen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int     need_total_display(t_file **files, char type)
+int		need_total_display(t_file **files, char type)
 {
 	int i;
 	int displayed_count;
@@ -29,7 +35,7 @@ int     need_total_display(t_file **files, char type)
 	return (displayed_count);
 }
 
-int     display_t_files(t_file **files, char *flags, char type)
+int		display_t_files(t_file **files, char *flags, char type)
 {
 	int i;
 	int displayed_count;
@@ -56,10 +62,10 @@ int     display_t_files(t_file **files, char *flags, char type)
 	return (displayed_count);
 }
 
-void    display_directory_recursive(t_file *file, char *flags, int break_space)
+void	display_directory_recursive(t_file *file, char *flags, int break_space)
 {
-	t_file  **files;
-	int     i;
+	t_file	**files;
+	int		i;
 
 	if (break_space)
 		ft_putchar('\n');
@@ -71,12 +77,12 @@ void    display_directory_recursive(t_file *file, char *flags, int break_space)
 	i = 0;
 	while (files[i])
 	{
-		if (!ft_strcmp(files[i]->filename, "..") || !ft_strcmp(files[i]->filename, "."))
+		if (is_default_dir(files[i]->filename))
 		{
 			i++;
 			continue;
 		}
-		if (isdir(files[i]))
+		else if (isdir(files[i]))
 			if (with_hidden(flags) || !file_is_hidden(files[i]->filename))
 				display_directory_recursive(files[i], flags, 1);
 		i++;
@@ -84,9 +90,9 @@ void    display_directory_recursive(t_file *file, char *flags, int break_space)
 	free_files(files);
 }
 
-void    display_all_dirs_recursive(t_file **files, char *flags)
+void	display_all_dirs_recursive(t_file **files, char *flags)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (files[i])

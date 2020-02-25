@@ -6,13 +6,13 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 20:40:51 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 20:42:33 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/02/25 14:17:19 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void                display_total(t_file **files, char *flags)
+void				display_total(t_file **files, char *flags)
 {
 	int total;
 	int i;
@@ -28,10 +28,10 @@ void                display_total(t_file **files, char *flags)
 	ft_printf("total %d\n", total);
 }
 
-void                set_owner_info(t_file *file, t_file_extra_data *data)
+void				set_owner_info(t_file *file, t_file_extra_data *data)
 {
-	struct passwd   *pw;
-	struct group    *gr;
+	struct passwd	*pw;
+	struct group	*gr;
 
 	pw = getpwuid(file->entry->st_uid);
 	gr = getgrgid(file->entry->st_gid);
@@ -45,10 +45,10 @@ void                set_owner_info(t_file *file, t_file_extra_data *data)
 		data->owner_group = ft_itoa(file->entry->st_gid);
 }
 
-char                *get_last_modification_time(t_file *file)
+char				*get_last_modification_time(t_file *file)
 {
-	char    *full;
-	char    *res;
+	char	*full;
+	char	*res;
 
 	full = ft_strdup(ctime(&(file->entry->st_mtime)));
 	res = ft_strsub(full, 4, 12);
@@ -56,9 +56,9 @@ char                *get_last_modification_time(t_file *file)
 	return (res);
 }
 
-t_file_extra_data   *init_file_extra_data(t_file *file)
+t_file_extra_data	*init_file_extra_data(t_file *file)
 {
-	t_file_extra_data   *data;
+	t_file_extra_data	*data;
 
 	data = (t_file_extra_data *)malloc(sizeof(t_file_extra_data));
 	data->privileges = get_privileges(file);

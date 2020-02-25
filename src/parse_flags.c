@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:33:28 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/01/22 23:36:50 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/02/25 14:20:36 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char		bad_flags(char *s)
 	return (0);
 }
 
-int check_flags(t_arguments *arguments)
+int			check_flags(t_arguments *arguments)
 {
 	char bad_char;
 	char *tmp;

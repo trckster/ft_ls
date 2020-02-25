@@ -6,26 +6,26 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 17:09:55 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/02/01 17:09:55 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/02/25 14:03:08 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void    swap_files(t_file **file, t_file **file2)
+void	swap_files(t_file **file, t_file **file2)
 {
-	t_file  *tmp;
+	t_file	*tmp;
 
 	tmp = *file;
 	*file = *file2;
 	*file2 = tmp;
 }
 
-int     file_is_hidden(char *filename)
+int		file_is_hidden(char *filename)
 {
-	int starts_with_dot;
-	int starts_with_dir_dot;
-	int starts_with_dir_2dot;
+	int	starts_with_dot;
+	int	starts_with_dir_dot;
+	int	starts_with_dir_2dot;
 
 	starts_with_dot = ft_starts_with(".", filename);
 	starts_with_dir_dot = ft_starts_with("./", filename);
@@ -33,11 +33,11 @@ int     file_is_hidden(char *filename)
 	return (starts_with_dot && !(starts_with_dir_2dot || starts_with_dir_dot));
 }
 
-char    *full(char *dirname, char *filename)
+char	*full(char *dirname, char *filename)
 {
-	char    *with_slash;
-	int     i;
-	char    *res;
+	char	*with_slash;
+	int		i;
+	char	*res;
 
 	i = ft_strlen(dirname) - 1;
 	while (dirname[i] == '/' && i >= 0)
@@ -48,16 +48,16 @@ char    *full(char *dirname, char *filename)
 	return (res);
 }
 
-int     isdir(t_file *file)
+int		isdir(t_file *file)
 {
 	return ((file->entry->st_mode & S_IFMT) == S_IFDIR);
 }
 
-void    reverse_files(t_file ***given_files)
+void	reverse_files(t_file ***given_files)
 {
-	t_file  **files;
-	int     i;
-	int     count;
+	t_file	**files;
+	int		i;
+	int		count;
 
 	files = *given_files;
 	count = files_count(files);

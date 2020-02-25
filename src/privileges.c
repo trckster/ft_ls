@@ -1,14 +1,20 @@
-/**
- *
- * Header
- *
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   privileges.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/25 14:18:30 by bkayleen          #+#    #+#             */
+/*   Updated: 2020/02/25 14:18:51 by bkayleen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char    determine_file_type(t_file *file)
+char	determine_file_type(t_file *file)
 {
-	int file_type;
+	int	file_type;
 
 	file_type = file->entry->st_mode & S_IFMT;
 	if (S_ISDIR(file_type))
@@ -29,9 +35,9 @@ char    determine_file_type(t_file *file)
 		return ('?');
 }
 
-char    *get_privileges(t_file *file)
+char	*get_privileges(t_file *file)
 {
-	char    *res;
+	char	*res;
 
 	res = (char *)malloc(11);
 	res[0] = determine_file_type(file);
