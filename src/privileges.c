@@ -6,7 +6,7 @@
 /*   By: bkayleen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 14:18:30 by bkayleen          #+#    #+#             */
-/*   Updated: 2020/02/25 14:18:51 by bkayleen         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:12:42 by bkayleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,11 @@ char	*get_privileges(t_file *file)
 	res[8] = file->entry->st_mode & S_IWOTH ? 'w' : '-';
 	res[9] = file->entry->st_mode & S_IXOTH ? 'x' : '-';
 	res[10] = 0;
+	if (file->entry->st_mode & S_ISUID)
+		res[3] = res[3] == 'x' ? 's' : 'S';
+	if (file->entry->st_mode & S_ISGID)
+		res[6] = res[6] == 'x' ? 's' : 'S';
+	if (file->entry->st_mode & S_ISVTX)
+		res[9] = (res[9] == 'x' || res[7] == 'r') ? 't' : 'T';
 	return (res);
 }
